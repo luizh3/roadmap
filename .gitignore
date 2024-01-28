@@ -1,0 +1,5 @@
+# Ignorar diretório .idea gerado pelo JetBrains IDEs
+.idea/
+
+# Ignorar diretório cmake-build-debug gerado pelo CMake
+cmake-build-debug/
