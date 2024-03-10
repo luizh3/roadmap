@@ -1,4 +1,5 @@
 #include <iostream>
+#include <typeinfo>
 
 // Source https://roadmap.sh/cpp
 
@@ -28,6 +29,53 @@ union Data {
     char letter;
     float decimal;
 };
+
+void cast_funcionalities(){
+
+    int x = 42;
+    float y = 3.14f;
+    string name = "test";
+
+    void* my_pointer;
+
+    my_pointer = &x;
+    cout << "X value is: " << *(static_cast<int*>(my_pointer)) << endl;
+
+    my_pointer = &y;
+    cout << "Y value is: " << *(static_cast<float*>(my_pointer)) << endl;
+
+    my_pointer = &y;
+    cout << "Name is: " << *(static_cast<string*>(my_pointer)) << endl;
+
+
+    // C++ 17
+
+//    std::any any_value;
+//
+//    any_value = 42;
+//    cout << "int value: " << any_cast<int>(any_value) << endl;
+//
+//    any_value = 3.14;
+//    cout << "double value: " << any_cast<double>(any_value) << endl;
+//
+//    any_value = string("Hello, world!");
+//    cout << "string value: " <<  any_cast<string>(any_value) << endl;
+
+}
+
+class Base { virtual void dummy() {} };
+class Derived : public Base { /* ... */ };
+
+void rtti() { // Run-Time Type Identification
+
+    Base* base_ptr = new Derived;
+
+    // Using typeid to get the type of the object
+    std::cout << "Type: " << typeid(*base_ptr).name() << '\n';
+
+    delete base_ptr;
+
+}
 
 int main() {
 
@@ -81,6 +129,8 @@ int main() {
     cout << "Union letter: " << myData.letter << endl;
 
     cout << "Union number now is not set: " << myData.number << endl;
+
+    rtti();
 
     return 0;
 }
