@@ -10,7 +10,6 @@ double circumference( const int radius ) {
     return 2 * PI * radius;
 }
 
-
 int main() {
 
     std::cout << "Circumference radius 10: " << circumference( 10 ) << std::endl;
